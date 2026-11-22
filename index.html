@@ -46,38 +46,31 @@ h2{font-size:20px;margin:56px 0 18px}
 @media(max-width:560px){.job{grid-template-columns:1fr;gap:2px}.hero{padding-top:44px}}
 @media(prefers-reduced-motion:reduce){*{transition:none!important}}
 
-/* Carte Balatro (hero) */
+/* Carte (hero) */
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 .wt{position:relative;width:min(540px,100%);margin:22px 0 0}
-.wt-float{perspective:900px;animation:wt-float 6s ease-in-out infinite}
-@keyframes wt-float{0%,100%{transform:translateY(0) rotate(-1.2deg)}50%{transform:translateY(-7px) rotate(1.2deg)}}
+.wt-float{perspective:900px;animation:wt-float 8s ease-in-out infinite}
+@keyframes wt-float{0%,100%{transform:translateY(0) rotate(-.3deg)}50%{transform:translateY(-2px) rotate(.3deg)}}
 .wt-card{all:unset;box-sizing:border-box;display:block;width:100%;aspect-ratio:85/55;cursor:pointer;container-type:inline-size;transform-style:preserve-3d;transform:rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .18s ease-out;-webkit-tap-highlight-color:transparent}
-.wt-card:hover{--lift:1.03}
-.wt-face{position:relative;display:grid;place-items:center;height:100%;box-sizing:border-box;background:var(--card);color:var(--ink);border:3px solid var(--edge);border-radius:16px;box-shadow:0 6px 0 var(--edge),0 18px 36px rgba(0,0,0,.35);overflow:hidden;transform:scale(var(--lift,1));transition:transform .18s ease-out}
+.wt-face{position:relative;display:grid;place-items:center;height:100%;box-sizing:border-box;background:var(--card);color:var(--ink);border:3px solid var(--edge);border-radius:16px;box-shadow:0 6px 0 var(--edge),0 18px 36px rgba(0,0,0,.35);overflow:hidden}
 .wt-card:focus-visible .wt-face{outline:3px solid var(--gold);outline-offset:5px}
-.wt-card.is-flip .wt-face{animation:wt-flip .5s ease-in-out}
-@keyframes wt-flip{0%{transform:rotateY(0) scale(1)}40%{transform:rotateY(90deg) scale(1.08)}41%{transform:rotateY(-90deg) scale(1.08)}72%{transform:rotateY(12deg) scale(.96)}86%{transform:rotateY(-4deg) scale(1.02)}100%{transform:rotateY(0) scale(1)}}
+.wt-card.is-juice .wt-face{animation:wt-juice .55s ease-out}
+@keyframes wt-juice{0%{transform:scale(1) rotate(0)}15%{transform:scale(1.07) rotate(-2.5deg)}35%{transform:scale(.98) rotate(1.8deg)}55%{transform:scale(1.02) rotate(-1deg)}75%{transform:scale(1) rotate(.4deg)}100%{transform:scale(1) rotate(0)}}
 .wt-shine{position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at var(--mx,50%) var(--my,30%),rgba(255,255,255,.7),transparent 55%);mix-blend-mode:soft-light;opacity:0;transition:opacity .2s}
 .wt-card:hover .wt-shine{opacity:1}
-.wt-idx{position:absolute;font-weight:700;font-size:13px;font-size:clamp(11px,2.6cqi,15px);line-height:1;color:var(--c)}
+.wt-idx{position:absolute;font-weight:700;font-size:13px;font-size:clamp(11px,2.6cqi,15px);line-height:1;color:var(--ink);opacity:.55}
 .wt-idx.tl{top:12px;left:14px}.wt-idx.br{bottom:12px;right:14px;transform:rotate(180deg)}
-.wt-addr{position:relative;font-weight:700;font-size:22px;line-height:1;white-space:nowrap}
-.wt-seg{position:relative;display:inline-block}
-.wt-br{position:absolute;left:.05em;right:.05em;height:.32em;border:.09em solid var(--c)}
-.wt-br.dn{top:calc(100% + .14em);border-top:none}
-.wt-br.up{bottom:calc(100% + .14em);border-bottom:none}
-.wt-lb{position:absolute;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;font-size:.5em}
-.wt-lb.dn{top:calc(100% + 1.1em)}.wt-lb.up{bottom:calc(100% + 1.1em)}
-.wt-lb i{display:block;width:.18em;height:.45em;background:var(--c)}
-.wt-lb b{background:var(--c);color:var(--ink);border:.12em solid var(--edge);border-radius:.4em;padding:.08em .55em;line-height:1.2}
-.wt-pop{position:absolute;left:50%;top:12%;z-index:60;font-weight:700;font-size:26px;line-height:1;color:var(--c);text-shadow:0 3px 0 var(--edge);pointer-events:none;white-space:nowrap;animation:wt-pop .9s ease-out forwards}
-@keyframes wt-pop{0%{transform:translate(-50%,10px) scale(.4) rotate(-8deg);opacity:0}25%{transform:translate(-50%,-10px) scale(1.25) rotate(4deg);opacity:1}60%{transform:translate(-50%,-20px) scale(1) rotate(-2deg);opacity:1}100%{transform:translate(-50%,-42px) scale(.9);opacity:0}}
+.wt-body{display:flex;flex-direction:column;align-items:center;gap:.7em}
+.wt-addr{font-weight:700;font-size:22px;line-height:1;white-space:nowrap;transition:font-size .25s ease-out}
+.wt-lb{font-size:13px;font-size:clamp(11px,2.8cqi,16px);line-height:1;opacity:.6}
+.wt-pop{position:absolute;left:50%;top:12%;z-index:60;font-weight:700;font-size:24px;line-height:1;color:var(--ink);text-shadow:0 2px 0 rgba(0,0,0,.18);pointer-events:none;white-space:nowrap;animation:wt-pop .9s ease-out forwards}
+@keyframes wt-pop{0%{transform:translate(-50%,10px) scale(.4) rotate(-8deg);opacity:0}25%{transform:translate(-50%,-10px) scale(1.2) rotate(4deg);opacity:1}60%{transform:translate(-50%,-20px) scale(1) rotate(-2deg);opacity:1}100%{transform:translate(-50%,-42px) scale(.9);opacity:0}}
 .hero .wt-hint{color:var(--dim);font-size:12px;margin-top:16px}
-@media(prefers-reduced-motion:reduce){.wt-float,.wt-card.is-flip .wt-face,.wt-pop{animation:none}.wt-pop{display:none}}
+@media(prefers-reduced-motion:reduce){.wt-float,.wt-card.is-juice .wt-face,.wt-pop{animation:none}.wt-pop{display:none}.wt-addr{transition:none}}
 </style></head><body><div class="wrap">
 <nav class="panel"><b>wildtamatoa.com<span class="beta">beta</span></b><div><a href="#work">Work</a><a href="#about">About</a><a href="#contact">Contact</a></div></nav>
 
-<header class="hero"><div class="beta" style="margin-bottom:16px">Beta v0.1 · work in progress</div><h1 class="sr-only">Wild Tamatoa</h1><div class="wt"><div class="wt-float"><button class="wt-card" id="wtCard" type="button" aria-label="Wild Tamatoa card: click to flip between me, email and website"><span class="wt-face" style="--c:var(--chips)"><span class="wt-idx tl">1/3</span><span class="wt-addr"><span class="wt-seg">wildtamatoa<span class="wt-br dn"></span><span class="wt-lb dn"><i></i><b>me</b></span></span></span><span class="wt-idx br">1/3</span><span class="wt-shine"></span></span></button></div><p class="wt-hint" aria-hidden="true">tap the card</p><span class="sr-only" aria-live="polite" id="wtLive"></span></div>
+<header class="hero"><div class="beta" style="margin-bottom:16px">Beta v0.1 · work in progress</div><h1 class="sr-only">Wild Tamatoa</h1><div class="wt"><div class="wt-float"><button class="wt-card" id="wtCard" type="button" aria-label="Wild Tamatoa card: click to switch between me, email and website"><span class="wt-face"><span class="wt-idx tl">1/3</span><span class="wt-body"><span class="wt-addr">wildtamatoa</span><span class="wt-lb">me</span></span><span class="wt-idx br">1/3</span><span class="wt-shine"></span></span></button></div><p class="wt-hint" aria-hidden="true">tap the card</p><span class="sr-only" aria-live="polite" id="wtLive"></span></div>
 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. This site is in beta, so expect rough edges.</p>
 <div class="btns"><a class="btn" href="#work">See my work</a><a class="btn alt" href="mailto:hello@wildtamatoa.com">Email me</a></div></header>
 
@@ -109,44 +102,54 @@ h2{font-size:20px;margin:56px 0 18px}
   const card = document.getElementById('wtCard');
   if (!card) return;
   const S = [
-    { k: 'me', t: 'wildtamatoa', c: 'var(--chips)', fs: '9cqi',
-      h: '<span class="wt-seg">wildtamatoa<span class="wt-br dn"></span><span class="wt-lb dn"><i></i><b>me</b></span></span>' },
-    { k: 'email', t: 'wildtamatoa@gmail.com', c: 'var(--orange)', fs: '6cqi',
-      h: '<span class="wt-seg">wildtamatoa@gmail.com<span class="wt-br dn"></span><span class="wt-lb dn"><i></i><b>email</b></span></span>' },
-    { k: 'website', t: 'wildtamatoa.com', c: 'var(--mult)', fs: '7.5cqi',
-      h: '<span class="wt-seg">wildtamatoa.com<span class="wt-br up"></span><span class="wt-lb up"><b>website</b><i></i></span></span>' }
+    { k: 'me', t: 'wildtamatoa', fs: '9cqi' },
+    { k: 'email', t: 'wildtamatoa@gmail.com', fs: '6cqi' },
+    { k: 'website', t: 'wildtamatoa.com', fs: '7.5cqi' }
   ];
-  const face = card.querySelector('.wt-face');
   const addr = card.querySelector('.wt-addr');
+  const lb = card.querySelector('.wt-lb');
   const idx = card.querySelectorAll('.wt-idx');
   const live = document.getElementById('wtLive');
   const wrap = card.closest('.wt');
   const rm = window.matchMedia('(prefers-reduced-motion: reduce)');
-  let i = 0, busy = false;
+  const CH = 'abcdefghijklmnopqrstuvwxyz@.';
+  let i = 0, raf = 0;
 
-  function paint() {
+  function setMeta() {
     const s = S[i];
-    face.style.setProperty('--c', s.c);
     addr.style.fontSize = s.fs;
-    addr.innerHTML = s.h;
+    lb.textContent = s.k;
     idx.forEach(e => { e.textContent = (i + 1) + '/3'; });
   }
 
+  // Les lettres défilent puis se fixent une à une, de gauche à droite.
+  function scramble(to) {
+    cancelAnimationFrame(raf);
+    const t0 = performance.now(), dur = 520, n = to.length;
+    const tick = now => {
+      const p = Math.min(1, (now - t0) / dur);
+      const fixed = Math.floor(p * n);
+      let out = '';
+      for (let j = 0; j < n; j++) out += j < fixed ? to[j] : CH[Math.floor(Math.random() * CH.length)];
+      addr.textContent = out;
+      if (p < 1) raf = requestAnimationFrame(tick); else addr.textContent = to;
+    };
+    raf = requestAnimationFrame(tick);
+  }
+
   card.addEventListener('click', () => {
-    if (busy) return;
     i = (i + 1) % S.length;
-    live.textContent = S[i].k + ': ' + S[i].t;
-    if (rm.matches) { paint(); return; }
-    busy = true;
-    card.classList.remove('is-flip');
+    const s = S[i];
+    live.textContent = s.k + ': ' + s.t;
+    setMeta();
+    if (rm.matches) { addr.textContent = s.t; return; }
+    scramble(s.t);
+    card.classList.remove('is-juice');
     void card.offsetWidth;
-    card.classList.add('is-flip');
-    setTimeout(paint, 200);
-    setTimeout(() => { card.classList.remove('is-flip'); busy = false; }, 520);
+    card.classList.add('is-juice');
     const pop = document.createElement('span');
     pop.className = 'wt-pop';
-    pop.textContent = '+' + S[i].k + '!';
-    pop.style.setProperty('--c', S[i].c);
+    pop.textContent = '+' + s.k + '!';
     wrap.appendChild(pop);
     setTimeout(() => pop.remove(), 950);
   });
@@ -165,7 +168,7 @@ h2{font-size:20px;margin:56px 0 18px}
     card.style.setProperty('--ry', '0deg');
   });
 
-  paint();
+  setMeta();
 })();
 </script>
 </body></html>
