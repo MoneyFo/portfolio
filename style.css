@@ -1,0 +1,164 @@
+/* ==========================================================================
+   wildtamatoa.com — styles
+   ========================================================================== */
+
+/* Police : IBM Plex Mono (fichiers dans /fonts) */
+@font-face {
+  font-family: "Plex Mono";
+  font-weight: 400;
+  font-display: swap;
+  src: url(/fonts/ibm-plex-mono-400.woff2) format("woff2");
+}
+@font-face {
+  font-family: "Plex Mono";
+  font-weight: 700;
+  font-display: swap;
+  src: url(/fonts/ibm-plex-mono-700.woff2) format("woff2");
+}
+
+:root {
+  color-scheme: dark;
+  --bg: #09090b;
+  --fg: #f2f2f3;
+  --dim: #8a8a93;
+  --f: "Plex Mono", "BlexMono Nerd Font", "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  font: 400 15px/1.7 var(--f);
+  color: var(--fg);
+  background: var(--bg);
+}
+
+/* Fond pointillé */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(rgba(255, 255, 255, .05) 1.2px, transparent 1.2px) 0 0 / 28px 28px,
+    var(--bg);
+}
+
+/* --------------------------------------------------------------------------
+   Contenu : machine à écrire, puis les langages
+   -------------------------------------------------------------------------- */
+
+main {
+  flex: 1 0 auto;
+  width: 100%;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: clamp(20px, 4vw, 48px);
+}
+
+/* Machine à écrire (copie locale dans /pieces/typewriter.js) */
+.tw {
+  display: block;
+  font: 400 clamp(12px, 2.2vw, 20px) / 1.2 var(--f);
+  color: var(--fg);
+}
+.tw pre { font: inherit; margin: 0; }
+
+/* Logos des langages, qui flottent en décalé */
+.langs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: clamp(16px, 3vw, 40px);
+}
+.langs ascii-art {
+  display: block;
+  width: clamp(120px, 16vw, 200px);
+}
+
+.float {
+  position: relative;
+  outline: none;
+  animation: float 6s ease-in-out infinite;
+}
+.float:nth-child(2) { animation-delay: -1.2s; }
+.float:nth-child(3) { animation-delay: -2.4s; }
+.float:nth-child(4) { animation-delay: -3.6s; }
+.float:nth-child(5) { animation-delay: -4.8s; }
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-8px); }
+}
+
+/* Nom du langage sous le logo, au survol (ou au focus clavier) */
+.name {
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  margin-top: 10px;
+  transform: translate(-50%, 2px);
+  font-size: 14px;
+  color: var(--fg);
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .2s, transform .2s;
+}
+.float:hover .name,
+.float:focus-visible .name {
+  opacity: 1;
+  transform: translate(-50%, 8px);
+}
+.float:focus-visible {
+  outline: 1px solid rgba(255, 255, 255, .25);
+  outline-offset: 8px;
+  border-radius: 8px;
+}
+
+/* --------------------------------------------------------------------------
+   Pied de page
+   -------------------------------------------------------------------------- */
+
+footer {
+  padding: 20px 24px calc(20px + env(safe-area-inset-bottom, 0px));
+  text-align: center;
+  font-size: 12px;
+  color: var(--dim);
+}
+footer a {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255, 255, 255, .18);
+}
+footer a:hover {
+  color: var(--fg);
+  border-color: rgba(255, 255, 255, .5);
+}
+
+/* « Powered by » + logo Cloudflare */
+.powered {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+.powered ascii-art {
+  display: block;
+  width: 84px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .float { animation: none; }
+}
