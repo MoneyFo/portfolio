@@ -4,155 +4,51 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Wild Tamatoa — Portfolio (proposal)</title>
-  <meta name="theme-color" content="#09090b">
   <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#09090b">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-  <script>document.documentElement.classList.add("js")</script>
   <link rel="stylesheet" href="/style.css">
-  <link rel="stylesheet" href="/proposal.css">
   <script type="module" src="/script.js"></script>
-  <script type="module" src="/proposal.js"></script>
 </head>
-<body class="proposal">
+<body>
 
-  <!-- En-tête -->
-  <header class="top">
-    <a class="brand" href="#top" aria-label="Wild Tamatoa, back to top">
-      <img src="/favicon.svg" alt="" width="28" height="28">
-      <span><span class="dim">~/</span>wildtamatoa</span>
-    </a>
-    <nav aria-label="Sections">
-      <a href="#languages">languages</a>
-      <a href="#work">work</a>
-      <a href="#about">about</a>
-      <a href="#contact">contact</a>
-    </nav>
-  </header>
+  <main>
+    <!-- Démarrage du système (pièce boot-sequence, copie locale dans /pieces) -->
+    <ascii-art class="boot" src="/pieces/boot-sequence.js" aria-label="A system boots, then waits at a login prompt."></ascii-art>
 
-  <main id="top">
-
-    <!-- Accueil : nom en bannière ASCII + machine à écrire -->
-    <section class="hero" aria-labelledby="hero-title">
-      <h1 id="hero-title" class="sr-only">Wild Tamatoa</h1>
-      <ascii-banner class="banner banner-wide" text="wild tamatoa" aria-hidden="true"></ascii-banner>
-      <ascii-banner class="banner banner-narrow" text="wild tamatoa" pixel="1" aria-hidden="true"></ascii-banner>
-      <p class="whoami"><span class="dim">$ whoami</span> [your role] · Tahiti, French Polynesia</p>
-      <ascii-art class="tw" piece="typewriter" options='{"prefix":"i make ","phrases":["small tools.","quiet websites.","things that last.","notes for later."]}' aria-label="i make small tools, quiet websites, things that last, notes for later."></ascii-art>
-      <a class="scroll" href="#languages" aria-label="Scroll to languages">↓</a>
-    </section>
+    <!-- Machine à écrire -->
+    <ascii-art class="tw" src="/pieces/typewriter.js" options='{"prefix":"","phrases":["language i try to speak."]}' aria-label="language i try to speak."></ascii-art>
 
     <!-- Langages : le nom apparaît au survol -->
-    <section id="languages" class="block reveal" aria-labelledby="languages-title">
-      <h2 id="languages-title"><span class="num">01</span>languages</h2>
-      <ascii-art class="tw" src="/pieces/typewriter.js" options='{"prefix":"","phrases":["language i try to speak."]}' aria-label="language i try to speak."></ascii-art>
-      <div class="langs">
-        <div class="float" tabindex="0">
-          <ascii-art piece="c" options='{"shine":5}' aria-label="Logo C en ASCII animé"></ascii-art>
-          <span class="name" aria-hidden="true">C</span>
-        </div>
-        <div class="float" tabindex="0">
-          <ascii-art piece="java" options='{"shine":5}' aria-label="Logo Java en ASCII animé"></ascii-art>
-          <span class="name" aria-hidden="true">Java</span>
-        </div>
-        <div class="float" tabindex="0">
-          <ascii-art piece="javascript" options='{"shine":5}' aria-label="Logo JavaScript en ASCII animé"></ascii-art>
-          <span class="name" aria-hidden="true">JavaScript</span>
-        </div>
-        <div class="float" tabindex="0">
-          <ascii-art piece="php" options='{"shine":5}' aria-label="Logo PHP en ASCII animé"></ascii-art>
-          <span class="name" aria-hidden="true">PHP</span>
-        </div>
-        <div class="float" tabindex="0">
-          <ascii-art piece="python" options='{"shine":5}' aria-label="Logo Python en ASCII animé"></ascii-art>
-          <span class="name" aria-hidden="true">Python</span>
-        </div>
+    <div class="langs">
+      <div class="float" tabindex="0">
+        <ascii-art piece="c" options='{"shine":5}' aria-label="Logo C en ASCII animé"></ascii-art>
+        <span class="name" aria-hidden="true">C</span>
       </div>
-    </section>
-
-    <!-- Travaux : une liste façon « ls -l » -->
-    <section id="work" class="block reveal" aria-labelledby="work-title">
-      <h2 id="work-title"><span class="num">02</span>work</h2>
-      <p class="cmd"><span class="dim">$</span> ls -l ~/work</p>
-      <ul class="ls">
-        <li>
-          <a href="https://github.com/MoneyFo/portfolio">
-            <span class="ls-date">2026</span>
-            <span class="ls-name">wildtamatoa.com</span>
-            <span class="ls-desc">this site. dots, ascii and a typewriter.</span>
-            <span class="ls-stack">html · css · cloudflare</span>
-            <span class="ls-go" aria-hidden="true">→</span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <span class="ls-date">2026</span>
-            <span class="ls-name">o'viri prefab</span>
-            <span class="ls-desc">landing page for expandable homes, delivered ready to live in.</span>
-            <span class="ls-stack">html · css · js</span>
-            <span class="ls-go" aria-hidden="true">→</span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <span class="ls-date">[year]</span>
-            <span class="ls-name">[project name]</span>
-            <span class="ls-desc">[one line: what it does, for whom]</span>
-            <span class="ls-stack">[stack]</span>
-            <span class="ls-go" aria-hidden="true">→</span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <span class="ls-date">[year]</span>
-            <span class="ls-name">[project name]</span>
-            <span class="ls-desc">[one line: what it does, for whom]</span>
-            <span class="ls-stack">[stack]</span>
-            <span class="ls-go" aria-hidden="true">→</span>
-          </a>
-        </li>
-      </ul>
-    </section>
-
-    <!-- À propos : une fiche façon « neofetch » -->
-    <section id="about" class="block reveal" aria-labelledby="about-title">
-      <h2 id="about-title"><span class="num">03</span>about</h2>
-      <div class="fetch">
-        <ascii-banner class="fetch-logo" text="TW" aria-hidden="true"></ascii-banner>
-        <div class="fetch-info">
-          <p class="fetch-user">wildtamatoa<span class="dim">@</span>tahiti</p>
-          <p class="fetch-rule" aria-hidden="true">──────────────────</p>
-          <dl>
-            <div><dt>location</dt><dd>Tahiti, French Polynesia</dd></div>
-            <div><dt>timezone</dt><dd>UTC−10</dd></div>
-            <div><dt>speaks</dt><dd>C · Java · JavaScript · PHP · Python</dd></div>
-            <div><dt>uptime</dt><dd>[years coding]</dd></div>
-            <div><dt>status</dt><dd>[open to freelance / studying / …]</dd></div>
-          </dl>
-          <p class="fetch-bio">[Two or three sentences about you: what you like to build, what you are learning right now, what you care about when you make something.]</p>
-        </div>
+      <div class="float" tabindex="0">
+        <ascii-art piece="java" options='{"shine":5}' aria-label="Logo Java en ASCII animé"></ascii-art>
+        <span class="name" aria-hidden="true">Java</span>
       </div>
-    </section>
-
-    <!-- Contact -->
-    <section id="contact" class="block reveal" aria-labelledby="contact-title">
-      <h2 id="contact-title"><span class="num">04</span>contact</h2>
-      <p class="cmd"><span class="dim">$</span> mail</p>
-      <div class="mail">
-        <a class="mail-addr" href="mailto:wildtamatoa@gmail.com">wildtamatoa@gmail.com</a>
-        <button class="copy" type="button" data-copy="wildtamatoa@gmail.com">[copy]</button>
-        <span class="sr-only" aria-live="polite" id="copyStatus"></span>
+      <div class="float" tabindex="0">
+        <ascii-art piece="javascript" options='{"shine":5}' aria-label="Logo JavaScript en ASCII animé"></ascii-art>
+        <span class="name" aria-hidden="true">JavaScript</span>
       </div>
-      <p class="links">
-        <a href="https://github.com/MoneyFo">github.com/MoneyFo</a>
-      </p>
-    </section>
-
+      <div class="float" tabindex="0">
+        <ascii-art piece="php" options='{"shine":5}' aria-label="Logo PHP en ASCII animé"></ascii-art>
+        <span class="name" aria-hidden="true">PHP</span>
+      </div>
+      <div class="float" tabindex="0">
+        <ascii-art piece="python" options='{"shine":5}' aria-label="Logo Python en ASCII animé"></ascii-art>
+        <span class="name" aria-hidden="true">Python</span>
+      </div>
+    </div>
   </main>
 
   <footer>
-    © 2026 Wild Tamatoa · designed &amp; built with <a href="https://claude.ai">Claude</a> · Powered by <a href="https://cloudflare.com">Cloudflare</a>
+    <!-- <ascii-art piece="cloudflare" aria-label="Cloudflare"></ascii-art> --> 
+    © 2026 Wild Tamatoa · designed &amp; built with <a href="https://claude.ai">Claude</a> ·  Powered by <a href="https://cloudflare.com">Cloudflare</a>
   </footer>
 
 </body>

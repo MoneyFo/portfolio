@@ -65,6 +65,12 @@ main {
   gap: clamp(20px, 4vw, 48px);
 }
 
+/* Démarrage du système (copie locale dans /pieces/boot-sequence.js) */
+.boot {
+  display: block;
+  width: min(760px, 100%);
+}
+
 /* Machine à écrire (copie locale dans /pieces/typewriter.js) */
 .tw {
   display: block;
