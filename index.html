@@ -13,6 +13,71 @@
 </head>
 <body>
 
+  <!-- ======================================================================
+       Écran de démarrage
+       Chaque <div class="l"> est une ligne : modifie, ajoute ou supprime-les.
+       Couleurs : faint (gris foncé) · dim (gris) · ok (vert) · info (bleu)
+                  · warn (orange) · err (rouge) ; sans classe = blanc.
+       data-wait="1.2" : secondes d'attente avant la ligne (sinon : rapide).
+       <span class="type"> : texte tapé lettre par lettre
+                             (data-speed = secondes par lettre, 0.07 par défaut).
+       Chaque <div class="screen"> efface l'écran précédent.
+       ====================================================================== -->
+  <div id="boot" class="boot-screen" role="dialog" aria-label="Intro">
+
+    <div class="screen" aria-hidden="true">
+      <div class="l" data-wait="0"><span class="faint">[    0.270442]</span> kernel: version 6.8.0-orbit (gcc 13.2.0) #1 SMP PREEMPT</div>
+      <div class="l" data-wait="0"><span class="faint">[    0.479758]</span> Command line: root=/dev/nvme0n1p2 ro quiet splash</div>
+      <div class="l" data-wait="0"><span class="faint">[    0.850744]</span> BIOS-e820: [mem 0x0000000000100000-0x00000000bfffffff] usable</div>
+      <div class="l" data-wait="0"><span class="faint">[    1.148638]</span> smpboot: Allowing 16 CPUs, 0 hotplug CPUs</div>
+      <div class="l"><span class="faint">[    1.389275]</span> Memory: 32611204K/33452032K available</div>
+      <div class="l"><span class="faint">[    1.669173]</span> ACPI: Core revision 20230628</div>
+      <div class="l"><span class="faint">[    1.888099]</span> nvme nvme0: 8/0/0 default/read/poll queues</div>
+      <div class="l"><span class="faint">[    2.270923]</span>  nvme0n1: p1 p2 p3</div>
+      <div class="l"><span class="faint">[    2.423723]</span> EXT4-fs (nvme0n1p2): mounted filesystem with ordered data mode</div>
+      <div class="l" data-wait="0.5">[  <span class="ok">OK</span>  ] Reached target Local File Systems.</div>
+      <div class="l">[  <span class="ok">OK</span>  ] Started Journal Service.</div>
+      <div class="l">[  <span class="ok">OK</span>  ] Started Load Kernel Modules.</div>
+      <div class="l dim">         Starting Network Manager...</div>
+      <div class="l">[  <span class="ok">OK</span>  ] Started Network Manager.</div>
+      <div class="l">[  <span class="ok">OK</span>  ] Reached target Network.</div>
+      <div class="l dim">         Starting OpenSSH server daemon...</div>
+      <div class="l">[  <span class="ok">OK</span>  ] Started OpenSSH server daemon.</div>
+      <div class="l">[  <span class="ok">OK</span>  ] Started Daily apt download activities.</div>
+      <div class="l">[ <span class="warn">WARN</span> ] thermald: cpu0 running above 85C, throttling</div>
+      <div class="l">[  <span class="ok">OK</span>  ] Started Docker Application Container Engine.</div>
+      <div class="l">[  <span class="ok">OK</span>  ] Started PostgreSQL 16 database server.</div>
+      <div class="l">[  <span class="ok">OK</span>  ] Started Redis in-memory data store.</div>
+      <div class="l dim">         Starting Time &amp; Date Service...</div>
+      <div class="l">[  <span class="ok">OK</span>  ] Started Time &amp; Date Service.</div>
+      <div class="l">[  <span class="ok">OK</span>  ] Mounted /srv/data.</div>
+      <div class="l">[  <span class="ok">OK</span>  ] Started Periodic Command Scheduler.</div>
+      <div class="l">[  <span class="ok">OK</span>  ] Started User Login Management.</div>
+      <div class="l">[  <span class="ok">OK</span>  ] Reached target Multi-User System.</div>
+      <div class="l">[  <span class="ok">OK</span>  ] Reached target Graphical Interface.</div>
+    </div>
+
+    <div class="screen" aria-hidden="true">
+      <div class="l" data-wait="0.8"></div>
+      <div class="l" data-wait="0">orbit-os 4.2 LTS <span class="info">devbox</span> <span class="dim">tty1</span></div>
+      <div class="l" data-wait="0"></div>
+      <div class="l" data-wait="0.6">devbox login: <span class="type ok" data-speed="0.22">twild</span></div>
+      <div class="l" data-wait="0.6">Password: </div>
+      <div class="l dim" data-wait="1.4">Last login: Sat Oct 17 22:14:09 2026 from 10.0.4.12</div>
+      <div class="l" data-wait="0"></div>
+      <div class="l" data-wait="0"><span class="dim">  System load: </span>0.42<span class="dim">     Processes:    </span>318</div>
+      <div class="l" data-wait="0"><span class="dim">  Usage of /:  </span>41.7% of 915GB<span class="dim">  Users logged in: </span>1</div>
+      <div class="l" data-wait="0"><span class="dim">  Memory usage: </span>12%<span class="dim">          IPv4 address: </span>10.0.4.27</div>
+      <div class="l" data-wait="0"></div>
+      <div class="l" data-wait="0">  <span class="warn">3 updates</span><span class="dim"> can be applied immediately.</span></div>
+      <div class="l" data-wait="0"></div>
+      <div class="l" data-wait="0.4"><span class="ok">twild@portfolio</span>:<span class="info">~</span>$ <span class="type" data-speed="0.09">./portfolio</span></div>
+    </div>
+
+    <button class="boot-skip" type="button">skip ›</button>
+  </div>
+  <noscript><style>#boot { display: none; }</style></noscript>
+
   <main>
     <!-- Machine à écrire -->
     <ascii-art class="tw" src="/pieces/typewriter.js" options='{"prefix":"","phrases":["language i try to speak."]}' aria-label="language i try to speak."></ascii-art>
