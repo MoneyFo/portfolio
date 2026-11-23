@@ -146,19 +146,6 @@ footer a:hover {
   border-color: rgba(255, 255, 255, .5);
 }
 
-/* « Powered by » + logo Cloudflare */
-.powered {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  margin-bottom: 12px;
-}
-.powered ascii-art {
-  display: block;
-  width: 84px;
-}
-
 @media (prefers-reduced-motion: reduce) {
   .float { animation: none; }
 }
