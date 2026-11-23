@@ -65,12 +65,6 @@ main {
   gap: clamp(20px, 4vw, 48px);
 }
 
-/* Démarrage du système (copie locale dans /pieces/boot-sequence.js) */
-.boot {
-  display: block;
-  width: min(760px, 100%);
-}
-
 /* Machine à écrire (copie locale dans /pieces/typewriter.js) */
 .tw {
   display: block;
@@ -154,4 +148,72 @@ footer a:hover {
 
 @media (prefers-reduced-motion: reduce) {
   .float { animation: none; }
+}
+
+/* --------------------------------------------------------------------------
+   Écran de démarrage (proposal.html) : texte HTML animé par script.js
+   -------------------------------------------------------------------------- */
+
+.boot-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  padding: 16px;
+  background:
+    radial-gradient(rgba(255, 255, 255, .05) 1.2px, transparent 1.2px) 0 0 / 28px 28px,
+    var(--bg);
+  color: #e6edf3;
+  font-size: clamp(7px, calc((100vw - 32px) / 48), 15px);
+  line-height: 1.25;
+  transition: opacity .6s ease, visibility .6s;
+  /* filet de sécurité : si le script ne tourne pas, l'écran s'efface seul */
+  animation: boot-failsafe 0s 40s forwards;
+}
+@keyframes boot-failsafe { to { opacity: 0; visibility: hidden; } }
+.boot-screen.done { opacity: 0; visibility: hidden; }
+
+.screen {
+  width: 80ch;
+  max-width: 100%;
+  height: calc(24 * 1.25em);
+  overflow: hidden;
+  display: none;
+}
+.screen.on { display: block; }
+.screen .l { white-space: pre; min-height: 1.25em; display: none; }
+.screen .l.on { display: block; }
+
+.boot-screen .faint { color: #484f58; }
+.boot-screen .dim   { color: #8b949e; }
+.boot-screen .ok    { color: #7ee787; }
+.boot-screen .info  { color: #79c0ff; }
+.boot-screen .warn  { color: #ffa657; }
+.boot-screen .err   { color: #ff7b72; }
+
+.cursor { display: inline-block; width: .6em; height: 1.1em; vertical-align: text-bottom; background: currentColor; color: #e6edf3; }
+.cursor.blink { animation: blink 1s steps(1) infinite; }
+@keyframes blink { 50% { opacity: 0; } }
+
+.boot-skip {
+  position: absolute;
+  right: 20px;
+  bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+  font: 400 12px var(--f);
+  color: var(--dim);
+  background: none;
+  border: 0;
+  padding: 10px;
+  cursor: pointer;
+}
+.boot-skip:hover, .boot-skip:focus-visible { color: var(--fg); }
+
+html.booting { overflow: hidden; }
+html.booted main, html.booted footer { animation: page-in .8s ease both; }
+@keyframes page-in { from { opacity: 0; transform: translateY(8px); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .boot-screen { display: none; }
+  html.booted main, html.booted footer { animation: none; }
 }
