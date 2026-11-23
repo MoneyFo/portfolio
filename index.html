@@ -17,7 +17,7 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;background:radial-grad
 main{min-height:100vh;min-height:100dvh;display:grid;place-items:center;padding:24px}
 .float{animation:float 6s ease-in-out infinite}
 @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
-ascii-art{display:block;font-size:clamp(7px,1.6vw,13px)}
+ascii-art{display:block;width:min(420px,72vw)}
 @media(prefers-reduced-motion:reduce){.float{animation:none}}
 </style>
 <script type="module" src="https://ascii.rest/ascii.js"></script>
