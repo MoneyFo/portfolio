@@ -1,6 +1,6 @@
 # wildtamatoa.com
 
-Portfolio de Wild Tamatoa, hébergé sur Cloudflare Pages.
+Portfolio -- Cloudflare Pages.
 
 - Site statique, sans étape de build :
   - `index.html` : la structure de la page, dont le texte de l'écran de démarrage (modifiable)
