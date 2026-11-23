@@ -1,0 +1,224 @@
+/* ==========================================================================
+   wildtamatoa.com — proposition de page complète
+   S'ajoute à style.css (fond pointillé, police, logos, pied de page).
+   ========================================================================== */
+
+.proposal { --line: rgba(255, 255, 255, .12); scroll-behavior: smooth; }
+html:has(.proposal) { scroll-behavior: smooth; scroll-padding-top: 72px; }
+
+.dim { color: var(--dim); }
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+}
+:focus-visible { outline: 1px solid rgba(255, 255, 255, .5); outline-offset: 4px; border-radius: 4px; }
+
+/* --------------------------------------------------------------------------
+   En-tête
+   -------------------------------------------------------------------------- */
+
+.top {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px clamp(16px, 4vw, 40px);
+  background: rgba(9, 9, 11, .72);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid transparent;
+  transition: border-color .2s;
+}
+.top.scrolled { border-bottom-color: var(--line); }
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--fg);
+  text-decoration: none;
+  font-weight: 700;
+}
+.brand img { display: block; }
+.top nav { display: flex; gap: clamp(12px, 2.5vw, 28px); font-size: 13px; }
+.top nav a { color: var(--dim); text-decoration: none; }
+@media (max-width: 560px) {
+  .brand > span { display: none; }
+  .top nav { gap: 14px; font-size: 12px; }
+  .top nav a::before { display: none; }
+}
+.top nav a::before { content: "./"; opacity: 0; transition: opacity .15s; }
+.top nav a:hover, .top nav a.active { color: var(--fg); }
+.top nav a:hover::before, .top nav a.active::before { opacity: 1; }
+
+/* --------------------------------------------------------------------------
+   Mise en page générale (remplace le centrage plein écran de style.css)
+   -------------------------------------------------------------------------- */
+
+.proposal main {
+  display: block;
+  max-width: 1100px;
+  padding: 0 clamp(16px, 4vw, 40px);
+}
+
+.block { padding: clamp(56px, 9vw, 110px) 0 0; }
+
+/* Titres de section : « 01  work ──────── » */
+.block h2 {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 0 0 28px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: lowercase;
+}
+.block h2 .num { color: var(--dim); font-weight: 400; }
+.block h2::after { content: ""; flex: 1; border-top: 1px dashed var(--line); }
+
+.cmd { margin: 0 0 18px; font-size: 14px; }
+
+/* Apparition douce des sections au défilement (seulement si le JS tourne) */
+.js .reveal { opacity: 0; transform: translateY(14px); transition: opacity .6s ease, transform .6s ease; }
+.js .reveal.seen { opacity: 1; transform: none; }
+
+/* --------------------------------------------------------------------------
+   Accueil
+   -------------------------------------------------------------------------- */
+
+.hero {
+  min-height: calc(100svh - 64px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 22px;
+  position: relative;
+  padding-bottom: 40px;
+}
+.banner { color: var(--fg); line-height: 1.2; }
+.banner-wide { font-size: clamp(6px, calc((100vw - 80px) / 70.2), 14px); }
+.banner-narrow { display: none; font-size: clamp(5px, calc((100vw - 32px) / 42), 13px); }
+@media (max-width: 720px) {
+  .banner-wide { display: none; }
+  .banner-narrow { display: block; }
+}
+.whoami { margin: 0; font-size: 15px; }
+.hero .tw { font-size: clamp(11px, calc((100vw - 40px) / 26.4), 20px); }
+.scroll {
+  position: absolute;
+  bottom: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--dim);
+  text-decoration: none;
+  font-size: 18px;
+  animation: nudge 2.4s ease-in-out infinite;
+}
+.scroll:hover { color: var(--fg); }
+@keyframes nudge { 0%, 100% { translate: 0 0; } 50% { translate: 0 6px; } }
+
+/* --------------------------------------------------------------------------
+   Langages (reprend les logos de style.css)
+   -------------------------------------------------------------------------- */
+
+#languages { display: flex; flex-direction: column; align-items: center; }
+#languages h2 { align-self: stretch; }
+#languages .langs { margin: 34px 0 30px; }
+#languages .langs ascii-art { width: clamp(110px, 14vw, 168px); }
+
+/* --------------------------------------------------------------------------
+   Travaux : liste façon « ls -l »
+   -------------------------------------------------------------------------- */
+
+.ls { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
+.ls li { border-bottom: 1px solid var(--line); }
+.ls a {
+  display: grid;
+  grid-template-columns: 56px 170px minmax(0, 1fr) 180px 20px;
+  align-items: baseline;
+  gap: 18px;
+  padding: 16px 12px;
+  color: var(--fg);
+  text-decoration: none;
+  transition: background-color .15s;
+}
+.ls-date, .ls-stack { color: var(--dim); font-size: 13px; }
+.ls-stack { text-align: right; }
+.ls-name { font-weight: 700; }
+.ls-name::before { content: "▸ "; opacity: 0; margin-left: -1.2em; transition: opacity .15s, margin .15s; }
+.ls-desc { color: #c8c8cf; }
+.ls-go { color: var(--dim); transition: transform .15s, color .15s; }
+.ls a:hover { background: rgba(255, 255, 255, .035); }
+.ls a:hover .ls-name::before { opacity: 1; margin-left: 0; }
+.ls a:hover .ls-go { color: var(--fg); transform: translateX(4px); }
+@media (max-width: 760px) {
+  .ls a { grid-template-columns: 1fr auto; gap: 4px 12px; }
+  .ls-date { grid-column: 1; grid-row: 1; }
+  .ls-name { grid-column: 1; grid-row: 2; }
+  .ls-desc { grid-column: 1 / -1; grid-row: 3; }
+  .ls-stack { grid-column: 1 / -1; grid-row: 4; text-align: left; }
+  .ls-go { grid-column: 2; grid-row: 1 / 3; align-self: center; }
+  .ls-name::before { display: none; }
+}
+
+/* --------------------------------------------------------------------------
+   À propos : fiche façon « neofetch »
+   -------------------------------------------------------------------------- */
+
+.fetch {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: clamp(24px, 5vw, 56px);
+}
+.fetch-logo { font-size: clamp(9px, 1.4vw, 14px); color: var(--fg); line-height: 1.2; flex: none; }
+.fetch-info { flex: 1 1 340px; min-width: 0; }
+.fetch-info p { margin: 0; }
+.fetch-user { font-weight: 700; }
+.fetch-rule { color: var(--dim); overflow: hidden; white-space: nowrap; }
+.fetch dl { margin: 10px 0 18px; }
+.fetch dl div { display: grid; grid-template-columns: 96px 1fr; gap: 12px; }
+.fetch dt { color: var(--dim); }
+.fetch dd { margin: 0; }
+.fetch-bio { color: #c8c8cf; max-width: 62ch; }
+
+/* --------------------------------------------------------------------------
+   Contact
+   -------------------------------------------------------------------------- */
+
+.mail { display: flex; align-items: baseline; flex-wrap: wrap; gap: 6px 18px; }
+.mail-addr {
+  font-size: clamp(20px, 4.2vw, 40px);
+  font-weight: 700;
+  color: var(--fg);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255, 255, 255, .2);
+  overflow-wrap: anywhere;
+}
+.mail-addr:hover { border-color: var(--fg); }
+.copy {
+  font: inherit;
+  font-size: 14px;
+  color: var(--dim);
+  background: none;
+  border: 0;
+  padding: 8px 4px;
+  cursor: pointer;
+}
+.copy:hover { color: var(--fg); }
+.links { margin: 22px 0 0; font-size: 14px; }
+.links a { color: var(--dim); text-decoration: none; border-bottom: 1px solid rgba(255, 255, 255, .18); }
+.links a:hover { color: var(--fg); }
+
+.proposal footer { margin-top: clamp(64px, 10vw, 120px); border-top: 1px dashed var(--line); }
+
+@media (prefers-reduced-motion: reduce) {
+  .js .reveal { opacity: 1; transform: none; transition: none; }
+  .scroll { animation: none; }
+  html:has(.proposal) { scroll-behavior: auto; }
+}
